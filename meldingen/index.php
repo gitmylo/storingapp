@@ -14,9 +14,18 @@
         <h1>Meldingen</h1>
         <a href="create.php">Nieuwe melding &gt;</a>
 
-        <?php if(isset($_GET['msg']))
+        <?php if(isset($_GET['re']))
         {
-            echo "<div class='msg'>" . $_GET['msg'] . "</div>";
+            $response = "Error retrieving response code";
+            switch($_GET['re']){
+                case "0":
+                    $response = "Melding verstuurd";
+                break;
+                case "1":
+                    $response = "Error sending report";
+                break;
+            }
+            echo "<div class='msg'>" . $response . "</div>";
         } ?>
 
         <div style="height: 300px; background: #ededed; display: flex; justify-content: center; align-items: center; color: #666666;">(hier komen de storingsmeldingen)</div>
