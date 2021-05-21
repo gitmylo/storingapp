@@ -28,7 +28,40 @@
             echo "<div class='msg'>" . $response . "</div>";
         } ?>
 
-        <div style="height: 300px; background: #ededed; display: flex; justify-content: center; align-items: center; color: #666666;">(hier komen de storingsmeldingen)</div>
+        <div>
+            <table>
+            <tr>
+            <th>ID</th>
+            <th>Attractie</th>
+            <th>Capaciteit</th>
+            <th>Type</th>
+            <th>Melder</th>
+            <th>Prioriteit</th>
+            <th>Gemeld op</th>
+            <th>Aanpassen</th>
+            </tr>
+            <?php 
+                require_once("../backend/conn.php");
+                $query = "SELECT * FROM meldingen";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach($meldingen as $melding){
+                    echo "<tr>";
+                    echo "<td>" . $melding["id"] . "</td>";
+                    echo "<td>" . $melding["attractie"] . "</td>";
+                    echo "<td>" . $melding["capaciteit"] . "</td>";
+                    echo "<td>" . $melding["type"] . "</td>";
+                    echo "<td>" . $melding["melder"] . "</td>";
+                    echo "<td>" . $melding["prioriteit"] . "</td>";
+                    echo "<td>" . $melding["gemeld_op"] . "</td>";
+                    echo "<td><a href=" . "edit.php?id=" . $melding["id"] . ">Aanpassen<a></td>";
+                    echo "</tr>";
+                }
+            ?>
+            </table>
+        </div>
     </div>  
 
 </body>

@@ -357,3 +357,41 @@ label{
   }
 }
 
+table{
+  background-color: lightsalmon;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+tr{
+  background-color: #333;
+  color: white;
+  opacity: 80%;
+
+  transition-duration: 300ms;
+}
+
+tr:hover {
+  opacity: 100%;
+}
+
+td:first-child {
+  padding: 2px;
+  
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+td:last-child{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+td a{
+  color: lightblue;
+}
+td a:visited{
+  color: lightgreen;
+}
